@@ -1,4 +1,4 @@
-# XZ System (Version 1.0 Beta)
+# XZ System (Version 1.0-beta.1)
 
 Supervised Shell & Handmade tool runner for All platform
 
@@ -22,4 +22,3 @@ Password:Admin
 ## At last
 
 This program is only for education.
-# XZ-System

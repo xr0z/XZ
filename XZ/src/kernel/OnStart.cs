@@ -6,7 +6,9 @@ internal static class OnStart
 {
     internal static async Task Start(UserDatabase db)
 {
-    string path = Environment.ProcessPath;
+    string exeDir = Path.GetDirectoryName(Environment.ProcessPath)!;
+        Environment.CurrentDirectory = exeDir;
+        Console.WriteLine(Environment.CurrentDirectory);
     bool isLoginSuccess = false;
     User? loggedInUser = null;
 
