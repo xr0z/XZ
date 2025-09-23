@@ -1,0 +1,30 @@
+README FIRST(最初に読んでください)
+
+ModsはXZシステムに入れるプラグイン・拡張機能的なものです。
+ModsディレクトリにはCsharpのクラスライブラリ形式でビルドしたdllファイルを入れてください。
+
+tips. もし安全に実行したい場合(XZシステムのプロセスを落としたくない場合)はdllをラッピング程度にして他の重要機構を別プロセスに移すのが良いでしょう
+
+```
+public interface ICommand
+    {
+        string Name { get; }
+        Task<string> Execute(string[] args);
+    }
+```
+1. 上記のインターフェースを入れてください
+```
+public class Entry : ICommand
+{
+    public string Name => "任意の名前";
+    public async Task<string> Execute(string[] args)
+    {
+        //ここから実行したい処理を書いてください
+        return "ok";
+    }
+}
+```
+2. インターフェースを継承した上記のようなクラスがエントリーポイントになります
+
+
+注意点 引数は渡せますがパーサは入れていないので自分で実装するかライブラリを使ってください
