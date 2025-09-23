@@ -117,9 +117,9 @@ internal class CommandData
     {
         try
         {
-            Console.Write("XZ System 1.0 Beta \n[-- Author : ");
+            Console.Write("XZ System 1.0-beta.1 \n[-- Author : ");
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write("AARR / Advanced Army of Red Raider ");
+            Console.Write("AARR Dev / Advanced Army of Red Raider ");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(" --]\n1. help - view help command\n2. testmod - only for test modifyapp\nSorry i will add others");
             return "ok";
