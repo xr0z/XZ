@@ -41,7 +41,7 @@ internal static class OnAwake
         Console.WriteLine("XZ System 1.0 Beta");
         Console.Write("[-- Author : ");
         Console.ForegroundColor = ConsoleColor.Red;
-        Console.Write("AARR / Advanced Army of Red Raider");
+        Console.Write("AARR Dev / Advanced Army of Red Raider");
         Console.ForegroundColor = ConsoleColor.Blue;
         Console.WriteLine(" --]\n");
     }
