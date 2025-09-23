@@ -2,8 +2,7 @@
 
 Supervised Shell & Handmade tool runner for All platform
 
-1. XZ System can
-
+XZ System can...
 Run DLL alike application
 Wrap shell with session
 
