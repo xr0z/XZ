@@ -38,7 +38,7 @@ internal static class OnAwake
     internal static void Write()
     {
         Console.ForegroundColor = ConsoleColor.Blue;
-        Console.WriteLine("XZ System 1.0-beta.1");
+        Console.WriteLine("XZ System 1.0-beta.2");
         Console.Write("[-- Author : ");
         Console.ForegroundColor = ConsoleColor.Red;
         Console.Write("AARR Dev / Advanced Army of Red Raider");

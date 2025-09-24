@@ -4,6 +4,7 @@ internal static class OnUser
 {
     internal static async Task<string> Home(UserDatabase db)
     {
+        await Task.Delay(50);
         Console.WriteLine("\n");
         Console.Clear();
         Log.Info("Login successfly");

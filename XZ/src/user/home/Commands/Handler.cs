@@ -18,12 +18,16 @@ internal class CommandHandler
     internal CommandHandler()
     {
         CommandData cmdData = new();
+        PackageManager pkgMan = new();
         CommandList = new Dictionary<string, Func<string[], Task<string>>>(20000)
         {
             {"help", cmdData.Help},
             {"shutdown", cmdData.Shutdown},
             {"logout", cmdData.Logout},
-            {"adduser", cmdData.AddUser}
+            {"adduser", cmdData.AddUser},
+            {"rmuser", cmdData.RemoveUser},
+            {"pkg",pkgMan.Pkg},
+            {"run",pkgMan.Run}
         };
         LoadCommandsFromFolder("./Mods");
     }
@@ -117,11 +121,11 @@ internal class CommandData
     {
         try
         {
-            Console.Write("XZ System 1.0-beta.1 \n[-- Author : ");
+            Console.Write("XZ System 1.0-beta.2 \n[-- Author : ");
             Console.ForegroundColor = ConsoleColor.Red;
             Console.Write("AARR Dev / Advanced Army of Red Raider ");
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine(" --]\n1. help - view help command\n2. testmod - only for test modifyapp\nSorry i will add others");
+            Console.WriteLine(" --]\n1. help - view help command\n2. pkg - use package manager(install,remove,list)\n3. run - run installed package\nSorry i will add others");
             return "ok";
         }
         catch (Exception ex)
@@ -131,25 +135,7 @@ internal class CommandData
             return "err";
         }
     }
-    internal async Task<string> Run(string[] args)
-    {
-        try
-        {
-            if (args.Length == 0)
-            {
-                Log.Warn("No data to run...");
-                return "err";
-            }
-            RunApplication r = new();
-            await r.Run(args[0], false);
-            return "ok";
-        }
-        catch (Exception ex)
-        {
-            Log.Error(ex.ToString());
-            return "err";
-        }
-    }
+    
     internal async Task<string> Shutdown(string[] args)
     {
         if (OnUser.isShutdown())
@@ -179,12 +165,11 @@ internal class CommandData
     {
         if (SessionManager.Current.CurrentUser.IsAdmin)
         {
-            Log.Info("XZ System User Manager - Add User");
+            Log.Info("\nXZ System User Manager - Add User");
             string username = Mod.Input("New user's name");
             string password = Mod.Input("New user's password");
             bool admin = OnUser.getYn(Mod.Input("Grant Admin access to new user? (y/n)"));
             dbStorage.db.AddUser(username, password, admin);
-            dbStorage.db.Save();
             return "ok";
         }
         else
@@ -193,30 +178,24 @@ internal class CommandData
             return "err";
         }
     }
-}
-internal class RunApplication
-{
-    internal async Task<bool> Run(string filename, bool createwindow)
+    internal async Task<string> RemoveUser(string[] args)
     {
-        try
+        if (SessionManager.Current.CurrentUser.IsAdmin)
         {
-            var psi = new ProcessStartInfo
+            Log.Info("\nXZ System User Manager - Remove User");
+            string username = Mod.Input("User's name you want to delete");
+            if (username == SessionManager.Current.CurrentUser.Username)
             {
-                FileName = filename,
-                UseShellExecute = false,
-                RedirectStandardInput = false,
-                RedirectStandardOutput = false,
-                RedirectStandardError = false,
-                CreateNoWindow = createwindow
-            };
-
-            using var process = Process.Start(psi);
-            process.WaitForExit();
-            return true;
+                Log.Warn("You can't delete you by yourself");
+                return "ok";
+            }
+            dbStorage.db.RemoveUser(username);
+            return "ok";
         }
-        catch
+        else
         {
-            return false;
+            Log.Error("You need admin to execute this command.");
+            return "err";
         }
     }
 }

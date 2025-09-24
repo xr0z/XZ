@@ -34,6 +34,16 @@ class UserDatabase
         Users.Add(new User { Username = username, PasswordHash = hash, IsAdmin = isAdmin });
         Save();
     }
+    internal bool RemoveUser(string username)
+    {
+        var user = Users.Find(u => u.Username == username);
+        if (user == null)
+            return false;
+
+        Users.Remove(user);
+        Save();
+        return true;
+    }
 
     internal bool VerifyUser(string username, string password)
     {
