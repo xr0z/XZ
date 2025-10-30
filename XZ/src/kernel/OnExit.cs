@@ -6,6 +6,7 @@ internal static class OnExit
 {
     internal static async Task Shutdown(UserDatabase db)
     {
+        SessionManager.End();
         db.Save();
         Console.Clear();
         Console.ForegroundColor = ConsoleColor.Blue;
@@ -18,6 +19,7 @@ internal static class OnExit
     }
     internal static void Errordown(UserDatabase db)
     {
+        SessionManager.End();
         db.Save();
         Console.ForegroundColor = ConsoleColor.Blue;
         Log.Fatal("Errordown - Unexpected Error has occured by unknown reason");
@@ -26,6 +28,7 @@ internal static class OnExit
     }
     internal static async Task Logout(UserDatabase db)
     {
+        SessionManager.End();
         db.Save();
         Console.Clear();
         Console.ForegroundColor = ConsoleColor.Blue;

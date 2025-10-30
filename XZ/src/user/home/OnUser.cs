@@ -15,7 +15,7 @@ internal static class OnUser
         while (true)
         {
             string cmdinput = Mod.Input("XZ_System_1.0Beta");
-            commandHandler.Call(cmdinput);
+            await commandHandler.Call(cmdinput);
         }
         /*
         if (isShutdown())
