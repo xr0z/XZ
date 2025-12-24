@@ -125,7 +125,7 @@ internal class CommandData
         {
             Console.Write("XZ System 1.0-beta.2 \n[-- Author : ");
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write("AARR Dev / Advanced Army of Red Raider ");
+            Console.Write("Gabriel , MSFroot , Xross ");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(" --]\n1. help - view help command\n2. pkg - use package manager(install,remove,list)\n3. run - run installed package\nSorry i will add others");
             return "ok";
