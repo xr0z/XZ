@@ -47,7 +47,6 @@ internal static class OnStart
     private static string ReadPassword()
     {
         Console.Write("Password > ");
-        //セキュリティを高めるためパスワード入力中はその文字が表示されません
         string pass = string.Empty;
         ConsoleKeyInfo key;
 

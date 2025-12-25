@@ -17,7 +17,7 @@ internal static class Mod
         }
         catch
         {
-            Console.WriteLine("");
+            Console.Write("");
             return 0;
         }
     }
