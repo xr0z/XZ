@@ -174,7 +174,7 @@ public static class ExpressionEvaluator
                     {
                         st.Push(a);
                     }
-                    else // u-
+                    else
                     {
                         if (a.isInt) st.Push((true, -a.iVal, -a.dVal));
                         else st.Push((false, 0, -a.dVal));

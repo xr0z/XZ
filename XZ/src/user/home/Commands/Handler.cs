@@ -28,7 +28,7 @@ internal class CommandHandler
             {"logout", cmdData.Logout},
             {"adduser", cmdData.AddUser},
             {"rmuser", cmdData.RemoveUser},
-            {"pkg",pkgMan.Pkg},
+            {"pkg",pkgMan.ExecuteCommand},
             {"run",pkgMan.Run}
         };
         LoadCommandsFromFolder("./Mods");
