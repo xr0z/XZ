@@ -20,7 +20,7 @@ internal class CommandHandler
         CommandData cmdData = new();
         PackageManager pkgMan = new();
         ProgramData pdata = new();
-        CommandList = new Dictionary<string, Func<string[], Task<string>>>(20000)
+        CommandList = new Dictionary<string, Func<string[], Task<string>>>(1000)
         {
             {"evalcalc", pdata.EvalCalculation},
             {"help", cmdData.Help},
